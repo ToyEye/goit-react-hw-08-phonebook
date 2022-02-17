@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import toast from 'react-hot-toast';
-import Button from '../Button';
+// import Button from '../Button';
+import { Button } from '@mui/material';
 import { ImputEnter, InputType, InputText } from '../FormComponents';
 import {
   useAddContactMutation,
@@ -89,7 +90,9 @@ export default function Form() {
           onChange={handleChange}
         />
       </InputType>
-      <Button type="submit">Add contact</Button>
+      <Button variant="contained" size="medium" type="submit">
+        Add contact
+      </Button>
     </FormStyled>
   );
 }

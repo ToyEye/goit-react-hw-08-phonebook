@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Button from '../Button';
+import { Button } from '@mui/material';
 
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from '../../redux/contacts/contactsApi';
@@ -25,7 +25,12 @@ export const ContactItem = ({ id, name, number }) => {
       <ContactName>
         {name} : {number}
       </ContactName>
-      <Button onClick={() => deleteContact(id)} type="button">
+      <Button
+        variant="contained"
+        size="medium"
+        onClick={() => deleteContact(id)}
+        type="button"
+      >
         Delete
       </Button>
     </ContactItemStyled>
