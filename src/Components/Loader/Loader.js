@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { MutatingDots } from 'react-loader-spinner';
 
 const LoaderContainer = styled.div`

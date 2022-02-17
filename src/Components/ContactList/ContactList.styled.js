@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { ContactItem } from '../ContactItem';
 import { useFetchContactsQuery } from '../../redux/contacts/contactsApi';
 import { LoaderSimbol } from '../Loader/';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import toast from 'react-hot-toast';
 import Button from '../Button';
 import { ImputEnter, InputType, InputText } from '../FormComponents';
