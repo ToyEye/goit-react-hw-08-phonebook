@@ -1,4 +1,4 @@
-import Form from '../Components/Form';
+import ContactForm from '../Components/Form/Contact-Form';
 import { Section, Title } from '../Components/Section';
 import ContactList from '../Components/ContactList';
 import Filter from '../Components/Filter';
@@ -16,7 +16,7 @@ export default function ContactsPage() {
       />
       <Section>
         <Title>Phonebook</Title>
-        <Form />
+        <ContactForm />
       </Section>
       <Section>
         <Title>Contacts</Title>

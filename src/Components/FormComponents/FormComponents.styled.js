@@ -1,6 +1,17 @@
 import styled from '@emotion/styled';
 
-const ImputEnter = styled.input`
+const FormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 450px;
+  padding: 10px 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+
+const InputEnter = styled.input`
   width: 220px;
   padding: 5px 15px;
   border-radius: 5px;
@@ -23,4 +34,4 @@ const InputText = styled.p`
   margin-bottom: 5px;
 `;
 
-export { ImputEnter, InputType, InputText };
+export { InputEnter, InputType, InputText, FormStyled };

@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
 import toast from 'react-hot-toast';
-// import Button from '../Button';
 import { Button } from '@mui/material';
-import { ImputEnter, InputType, InputText } from '../FormComponents';
+import {
+  InputEnter,
+  InputType,
+  InputText,
+  FormStyled,
+} from '../FormComponents';
 import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contacts/contactsApi.js';
-
-const FormStyled = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-  width: 450px;
-  padding: 10px 15px;
-  border: 1px solid black;
-  border-radius: 5px;
-`;
 
 export default function Form() {
   const [name, setName] = useState('');
@@ -65,7 +57,7 @@ export default function Form() {
       <InputType>
         {' '}
         <InputText>Name</InputText>
-        <ImputEnter
+        <InputEnter
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -79,7 +71,7 @@ export default function Form() {
       <InputType>
         {' '}
         <InputText>Name</InputText>
-        <ImputEnter
+        <InputEnter
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
