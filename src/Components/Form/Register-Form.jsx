@@ -5,15 +5,16 @@ import {
   InputText,
   FormStyled,
 } from '../FormComponents';
-import { useGetRegisterUserMutation } from '../../redux/auth/authApi';
-
+import { signUp } from '../../redux/auth/auth-operations.js';
+import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [registerUser] = useGetRegisterUserMutation();
+
+  const dispatch = useDispatch();
 
   const handleChange = evt => {
     const { name, value } = evt.target;
@@ -33,9 +34,9 @@ export default function RegisterForm() {
     }
   };
 
-  const handleSubmit = async evt => {
+  const handleSubmit = evt => {
     evt.preventDefault();
-    await registerUser({ name, email, password });
+    dispatch(signUp({ name, password, email }));
     reset();
   };
 

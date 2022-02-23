@@ -5,13 +5,14 @@ import {
   InputText,
   FormStyled,
 } from '../FormComponents';
-
+import { logIn } from '../../redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
 
 export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-
+  const dispatch = useDispatch();
   const handleChange = evt => {
     const { name, value } = evt.target;
 
@@ -29,7 +30,7 @@ export default function LoginForm() {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-
+    dispatch(logIn({ email, password }));
     reset();
   };
 
@@ -65,7 +66,7 @@ export default function LoginForm() {
         />
       </InputType>
       <Button variant="contained" size="medium" type="submit">
-        Register
+        Enter
       </Button>
     </FormStyled>
   );

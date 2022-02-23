@@ -20,6 +20,7 @@ const ContactList = () => {
   const filter = useSelector(getFilter).toLowerCase();
 
   const { data: contacts, isFetching } = useFetchContactsQuery();
+
   const getFilteredContacts = contacts =>
     contacts.filter(({ name }) => name.toLowerCase().includes(filter));
   const filtered = contacts ? getFilteredContacts(contacts) : [];
