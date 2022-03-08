@@ -36,6 +36,7 @@ export default function RegisterForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
     dispatch(signUp({ name, password, email }));
     reset();
   };
