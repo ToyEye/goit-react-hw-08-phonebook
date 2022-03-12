@@ -33,7 +33,7 @@ const persistedReducer = persistReducer(persistConfigContacts, authSlice);
 
 export const store = configureStore({
   reducer: {
-    user: persistedReducer,
+    auth: persistedReducer,
     contacts: contacts,
     [contactApi.reducerPath]: contactApi.reducer,
   },
