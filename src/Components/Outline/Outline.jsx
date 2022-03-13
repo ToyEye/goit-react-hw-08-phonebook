@@ -1,26 +1,22 @@
-import { AppBar, Toolbar } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { AppBar, Toolbar, Box } from '@mui/material';
+// import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import AuthBar from './Authbar';
 import UserMenu from './UserMenu';
+import Navigation from './Navigation';
 
 export default function Outline() {
   const login = useSelector(authSelectors.getIsLoggedIn);
-  console.log(login);
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="contacts">Contacts</NavLink>
-          </li>
-          <li>{login ? <UserMenu /> : <AuthBar />}</li>
-        </ul>
-      </Toolbar>
-    </AppBar>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <Navigation />
+          {login ? <UserMenu /> : <AuthBar />}
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }

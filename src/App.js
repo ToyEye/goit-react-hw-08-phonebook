@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from './Components/Container';
 import { Footer } from './Components/Footer';
 import ContactsPage from './Views/Contacts-page';
@@ -8,8 +8,16 @@ import HomePage from './Views/HomePage';
 import RegisterPage from './Views/Register-page';
 import LoginPage from './Views/Login-page';
 import Outline from './Components/Outline/Outline';
+import { currentUser } from './redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
+
   return (
     <Container>
       <Outline />
