@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import {
-  InputEnter,
-  InputType,
-  InputText,
-  FormStyled,
-} from '../FormComponents';
+import { InputType, InputText, FormStyled } from '../FormComponents';
 import { signUp } from '../../redux/auth/auth-operations.js';
 import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
+import { TextField } from '@mui/material';
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
@@ -51,12 +47,14 @@ export default function RegisterForm() {
     <FormStyled onSubmit={handleSubmit}>
       <InputType>
         <InputText>Name</InputText>
-        <InputEnter
+        <TextField
+          label="Enter your name"
+          variant="outlined"
+          size="small"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="Enter your name"
           required
           value={name}
           onChange={handleChange}
@@ -64,24 +62,28 @@ export default function RegisterForm() {
       </InputType>
       <InputType>
         <InputText>Email</InputText>
-        <InputEnter
+        <TextField
+          label="Enter your email"
+          variant="outlined"
+          size="small"
           type="email"
           name="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           title="Email must contain @ sign"
           required
-          placeholder="Enter your email"
           value={email}
           onChange={handleChange}
         />
       </InputType>
       <InputType>
         <InputText>Password</InputText>
-        <InputEnter
+        <TextField
+          label="Enter your password"
+          variant="outlined"
+          size="small"
           type="password"
           name="password"
           required
-          placeholder="Enter your password"
           value={password}
           onChange={handleChange}
         />

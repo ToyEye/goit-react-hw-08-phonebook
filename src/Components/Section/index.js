@@ -1,1 +1,1 @@
-export {Section,Title} from "./Section.styled"
+export { Section } from './Section.styled';

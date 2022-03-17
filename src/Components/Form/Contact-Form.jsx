@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Button } from '@mui/material';
-import {
-  InputEnter,
-  InputType,
-  InputText,
-  FormStyled,
-} from '../FormComponents';
+import { InputType, InputText, FormStyled } from '../FormComponents';
 import {
   useAddContactMutation,
   useFetchContactsQuery,
 } from '../../redux/contacts/contactsApi.js';
+import { TextField } from '@mui/material';
 
 export default function Form() {
   const [name, setName] = useState('');
@@ -37,10 +33,10 @@ export default function Form() {
     evt.preventDefault();
 
     if (data.find(contact => contact.name === name)) {
-      toast.error('Контакт существует!');
+      toast.error('Contact exists!');
       return;
     } else {
-      toast.success('Контакт добавлен');
+      toast.success('Contact added');
       await createContact({ name, number });
     }
 
@@ -55,29 +51,31 @@ export default function Form() {
   return (
     <FormStyled onSubmit={handleSubmit}>
       <InputType>
-        {' '}
         <InputText>Name</InputText>
-        <InputEnter
+        <TextField
+          label="Enter name"
+          variant="outlined"
+          size="small"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="Enter your name"
           required
           value={name}
           onChange={handleChange}
         />
       </InputType>
       <InputType>
-        {' '}
-        <InputText>Name</InputText>
-        <InputEnter
+        <InputText>Number</InputText>
+        <TextField
+          label="Enter number"
+          variant="outlined"
+          size="small"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          placeholder="Enter your number"
           value={number}
           onChange={handleChange}
         />

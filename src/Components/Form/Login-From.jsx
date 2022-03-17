@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import {
-  InputEnter,
-  InputType,
-  InputText,
-  FormStyled,
-} from '../FormComponents';
+import { InputType, InputText, FormStyled } from '../FormComponents';
 import { logIn } from '../../redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
+import { TextField } from '@mui/material';
 
 export default function LoginForm() {
   const [password, setPassword] = useState('');
@@ -43,25 +39,29 @@ export default function LoginForm() {
     <FormStyled onSubmit={handleSubmit}>
       <InputType>
         <InputText>Email</InputText>
-        <InputEnter
+        <TextField
+          label="Enter your email"
+          variant="outlined"
+          size="small"
           type="email"
           name="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           title="Email must contain @ sign"
           required
-          placeholder="Enter your email"
           value={email}
           onChange={handleChange}
         />
       </InputType>
       <InputType>
         <InputText>Password</InputText>
-        <InputEnter
+        <TextField
+          label="Enter your password"
+          variant="outlined"
           type="password"
           name="password"
           required
-          placeholder="Enter your password"
           value={password}
+          size="small"
           onChange={handleChange}
         />
       </InputType>

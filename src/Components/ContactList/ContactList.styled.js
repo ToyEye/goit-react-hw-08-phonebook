@@ -7,13 +7,17 @@ import { useSelector } from 'react-redux';
 import { getFilter } from '../../redux/contacts/contact-selector';
 
 const ContactStyledList = styled.ul`
-  width: 450px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 15px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   border: 1px solid black;
   border-radius: 5px;
+
+  background-color: #0c355e;
 `;
 
 const ContactList = () => {

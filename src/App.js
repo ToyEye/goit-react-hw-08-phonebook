@@ -1,15 +1,19 @@
 import './App.css';
-import React, { useEffect } from 'react';
-import { Container } from './Components/Container';
-import { Footer } from './Components/Footer';
-import ContactsPage from './Views/Contacts-page';
+import React, { useEffect, lazy, Suspense } from 'react';
+import { Container } from '@mui/material';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './Views/HomePage';
-import RegisterPage from './Views/Register-page';
-import LoginPage from './Views/Login-page';
 import Outline from './Components/Outline/Outline';
 import { currentUser } from './redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
+import PrivateRoute from './Components/PrivateRoute';
+import PublicRoute from './Components/PublicRoute';
+import { Toaster } from 'react-hot-toast';
+import { LoaderSimbol } from './Components/Loader';
+
+const HomePage = lazy(() => import('./Views/HomePage'));
+const RegisterPage = lazy(() => import('./Views/Register-page'));
+const LoginPage = lazy(() => import('./Views/Login-page'));
+const ContactsPage = lazy(() => import('./Views/Contacts-page'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,15 +24,44 @@ export default function App() {
 
   return (
     <Container>
+      <Toaster
+        toastOptions={{
+          error: {
+            duration: 2000,
+          },
+        }}
+      />
       <Outline />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="contacts" element={<ContactsPage />} />
-        <Route path="*" element={<Navigate to="/" replace={true} />} />
-      </Routes>
-      <Footer />
+      <Suspense fallback={<LoaderSimbol />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="register"
+            element={
+              <PublicRoute restricted>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+      </Suspense>
     </Container>
   );
 }

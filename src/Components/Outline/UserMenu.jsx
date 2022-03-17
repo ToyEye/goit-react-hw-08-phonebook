@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import authSelectors from '../../redux/auth/auth-selectors';
 import { logOut } from '../../redux/auth/auth-operations';
-import ExitToApp from '@mui/icons-material/ExitToApp';
 
 const styles = {
   container: {
@@ -16,10 +15,6 @@ const styles = {
     fontWeight: 700,
     marginRight: 12,
   },
-  icon: {
-    color: 'black',
-    padding: 2,
-  },
 };
 
 export default function UserMenu() {
@@ -28,16 +23,31 @@ export default function UserMenu() {
 
   return (
     <div style={styles.container}>
-      <span style={styles.name}>Добро пожаловать, {userName}</span>
+      <Typography
+        sx={{
+          fontWeight: 700,
+          marginRight: '12px',
+          fontFamily: 'roboto, sans-serif',
+        }}
+        component="span"
+      >
+        Welcome, {userName}
+      </Typography>
       <Button
         variant="contained"
         type="button"
-        color="secondary"
+        sx={{
+          color: 'white',
+          background: '#c42828',
+          fontWeight: 600,
+          '&:hover': {
+            backgroundColor: '#a62828',
+          },
+        }}
         size="small"
         onClick={() => dispatch(logOut())}
       >
-        <ExitToApp style={styles.icon} />
-        Выйти
+        Logout
       </Button>
     </div>
   );

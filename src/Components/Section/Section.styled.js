@@ -6,11 +6,4 @@ const Section = styled.section`
   text-align: center;
 `;
 
-const Title = styled.h1`
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 25px;
-  text-align: center;
-`;
-
-export { Section, Title };
+export { Section };

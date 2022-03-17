@@ -1,5 +1,4 @@
-import { AppBar, Toolbar, Box } from '@mui/material';
-// import { NavLink } from 'react-router-dom';
+import { AppBar, Toolbar } from '@mui/material';
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import AuthBar from './Authbar';
@@ -10,13 +9,11 @@ export default function Outline() {
   const login = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-          <Navigation />
-          {login ? <UserMenu /> : <AuthBar />}
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="static" sx={{ backgroundColor: '#0c355e' }}>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Navigation />
+        {login ? <UserMenu /> : <AuthBar />}
+      </Toolbar>
+    </AppBar>
   );
 }

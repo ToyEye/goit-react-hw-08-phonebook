@@ -1,11 +1,14 @@
-import RegisterForm from '../Components/Form/Login-From';
-import { Section, Title } from '../Components/Section';
+import LoginForm from '../Components/Form/Login-From';
+import { Section } from '../Components/Section';
+import { Typography } from '@mui/material';
 
 export default function LoginPage() {
   return (
     <Section>
-      <Title>Please enter</Title>
-      <RegisterForm />
+      <Typography align="center" variant="h2" gutterBottom component="h2">
+        Please enter
+      </Typography>
+      <LoginForm />
     </Section>
   );
 }

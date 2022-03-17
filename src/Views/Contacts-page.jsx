@@ -1,25 +1,22 @@
 import ContactForm from '../Components/Form/Contact-Form';
-import { Section, Title } from '../Components/Section';
+import { Section } from '../Components/Section';
 import ContactList from '../Components/ContactList';
 import Filter from '../Components/Filter';
-import { Toaster } from 'react-hot-toast';
+import { Typography } from '@mui/material';
 
 export default function ContactsPage() {
   return (
     <>
-      <Toaster
-        toastOptions={{
-          error: {
-            duration: 2000,
-          },
-        }}
-      />
       <Section>
-        <Title>Phonebook</Title>
+        <Typography align="center" variant="h3" gutterBottom component="h1">
+          Phonebook
+        </Typography>
         <ContactForm />
       </Section>
       <Section>
-        <Title>Contacts</Title>
+        <Typography align="center" variant="h3" gutterBottom component="h1">
+          Contacts
+        </Typography>
         <Filter />
         <ContactList />
       </Section>

@@ -1,6 +1,1 @@
-export {
-  InputEnter,
-  InputType,
-  InputText,
-  FormStyled,
-} from './FormComponents.styled';
+export { InputType, InputText, FormStyled } from './FormComponents.styled';

@@ -1,10 +1,13 @@
 import RegisterForm from '../Components/Form/Register-Form';
-import { Section, Title } from '../Components/Section';
+import { Section } from '../Components/Section';
+import { Typography } from '@mui/material';
 
 export default function RegisterPage() {
   return (
     <Section>
-      <Title>Please register</Title>
+      <Typography align="center" variant="h2" gutterBottom component="h2">
+        Please register
+      </Typography>
       <RegisterForm />
     </Section>
   );
