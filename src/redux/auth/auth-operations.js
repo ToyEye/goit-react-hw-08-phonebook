@@ -14,29 +14,38 @@ const token = {
   },
 };
 
-export const signUp = createAsyncThunk('auth/signup', async credentials => {
-  try {
-    const { data } = await axios.post('users/signup', credentials);
-    token.set(data.token);
-    toast.success(`Welcome ${data.user.name}`);
+export const signUp = createAsyncThunk(
+  'auth/signup',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('users/signup', credentials);
+      token.set(data.token);
+      toast.success(`Welcome ${data.user.name}`);
 
-    return data;
-  } catch (error) {
-    toast.error('Oops, something went wrong');
+      return data;
+    } catch (error) {
+      toast.error('Oops, something went wrong');
+      return thunkAPI.rejectWithValue();
+    }
   }
-});
+);
 
-export const logIn = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('users/login', credentials);
-    toast.success(`Welcome ${data.user.name}`);
-    token.set(data.token);
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('users/login', credentials);
 
-    return data;
-  } catch (error) {
-    toast.error('Oops, something went wrong');
+      toast.success(`Welcome ${data.user.name}`);
+      token.set(data.token);
+
+      return data;
+    } catch (error) {
+      toast.error('Login error');
+      return thunkAPI.rejectWithValue();
+    }
   }
-});
+);
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
@@ -47,6 +56,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return data;
   } catch (error) {
     toast.error('Oops, something went wrong');
+    return thunkAPI.rejectWithValue();
   }
 });
 

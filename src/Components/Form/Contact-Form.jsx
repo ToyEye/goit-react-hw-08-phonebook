@@ -32,7 +32,9 @@ export default function Form() {
   const handleSubmit = async evt => {
     evt.preventDefault();
 
-    if (data.find(contact => contact.name === name)) {
+    if (
+      data.find(contact => contact.name.toLowerCase() === name.toLowerCase())
+    ) {
       toast.error('Contact exists!');
       return;
     } else {
